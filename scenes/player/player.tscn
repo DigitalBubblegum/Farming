@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://ca106qafnt25o"]
+[gd_scene load_steps=101 format=3 uid="uid://ca106qafnt25o"]
 
 [ext_resource type="Script" uid="uid://bbak6sldobcjr" path="res://scripts/player.gd" id="1_dovo2"]
 [ext_resource type="Texture2D" uid="uid://dpfxibevth7y" path="res://graphics/characters/player_animations.png" id="2_yewv4"]
@@ -744,6 +744,8 @@ states/move/position = Vector2(471.66666, 103.333305)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_0owmy"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_dovo2"), "move", "idle", SubResource("AnimationNodeStateMachineTransition_gmlin")]
 graph_offset = Vector2(65, -44)
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_dovo2"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yewv4"]
 animation = &"axe_left"
 
@@ -910,13 +912,15 @@ transitions = ["Start", "hoe", SubResource("AnimationNodeStateMachineTransition_
 graph_offset = Vector2(-13.637687, -191)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6eyoc"]
-graph_offset = Vector2(-158.45923, -55.645966)
-nodes/output/position = Vector2(888, 144)
+graph_offset = Vector2(-34.107098, -8.97171)
+nodes/output/position = Vector2(1253.3334, 80)
 nodes/ToolStateMachine/node = SubResource("AnimationNodeStateMachine_vwwfy")
 nodes/ToolStateMachine/position = Vector2(586.6667, 346.66666)
 nodes/MoveStateMachine/node = SubResource("AnimationNodeStateMachine_qek5x")
-nodes/MoveStateMachine/position = Vector2(560, -26.666666)
-node_connections = [&"output", 0, &"MoveStateMachine"]
+nodes/MoveStateMachine/position = Vector2(506.66666, 80)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_dovo2")
+nodes/OneShot/position = Vector2(960, 26.666666)
+node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"MoveStateMachine", &"OneShot", 1, &"ToolStateMachine"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -944,5 +948,10 @@ parameters/ToolStateMachine/hoe/blend_position = Vector2(-0.536646, -0.652174)
 parameters/ToolStateMachine/water/blend_position = Vector2(0, 0)
 parameters/MoveStateMachine/idle/blend_position = Vector2(0, 0)
 parameters/MoveStateMachine/move/blend_position = Vector2(0, 0)
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

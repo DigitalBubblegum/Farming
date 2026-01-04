@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://ca106qafnt25o"]
+[gd_scene load_steps=100 format=3 uid="uid://ca106qafnt25o"]
 
 [ext_resource type="Script" uid="uid://bbak6sldobcjr" path="res://scripts/player.gd" id="1_dovo2"]
 [ext_resource type="Texture2D" uid="uid://dpfxibevth7y" path="res://graphics/characters/player_animations.png" id="2_yewv4"]
@@ -686,14 +686,63 @@ blend_point_7/pos = Vector2(1, 1)
 blend_point_8/node = SubResource("AnimationNodeAnimation_h17s1")
 blend_point_8/pos = Vector2(0, 0)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_je7p5"]
+animation = &"move_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fm80t"]
+animation = &"move_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gx1jg"]
+animation = &"move_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ugbui"]
+animation = &"move_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fcs02"]
+animation = &"move_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_myrg7"]
+animation = &"move_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kvlxm"]
+animation = &"move_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uf5tr"]
+animation = &"move_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_lgqa7"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_je7p5")
+blend_point_0/pos = Vector2(1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_fm80t")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_gx1jg")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ugbui")
+blend_point_3/pos = Vector2(0, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_fcs02")
+blend_point_4/pos = Vector2(-1, 1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_myrg7")
+blend_point_5/pos = Vector2(-1, -1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_kvlxm")
+blend_point_6/pos = Vector2(1, -1)
+blend_point_7/node = SubResource("AnimationNodeAnimation_uf5tr")
+blend_point_7/pos = Vector2(1, 1)
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0owmy"]
 advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dovo2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gmlin"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qek5x"]
 states/Start/position = Vector2(220, 105.33333)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_75vfm")
-states/idle/position = Vector2(605.3333, 143.33333)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_0owmy")]
+states/idle/position = Vector2(330.66666, 104.66666)
+states/move/node = SubResource("AnimationNodeBlendSpace2D_lgqa7")
+states/move/position = Vector2(471.66666, 103.333305)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_0owmy"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_dovo2"), "move", "idle", SubResource("AnimationNodeStateMachineTransition_gmlin")]
+graph_offset = Vector2(65, -44)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yewv4"]
 animation = &"axe_left"
@@ -861,7 +910,7 @@ transitions = ["Start", "hoe", SubResource("AnimationNodeStateMachineTransition_
 graph_offset = Vector2(-13.637687, -191)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6eyoc"]
-graph_offset = Vector2(-27.107016, -60.497772)
+graph_offset = Vector2(-158.45923, -55.645966)
 nodes/output/position = Vector2(888, 144)
 nodes/ToolStateMachine/node = SubResource("AnimationNodeStateMachine_vwwfy")
 nodes/ToolStateMachine/position = Vector2(586.6667, 346.66666)
@@ -894,5 +943,6 @@ parameters/ToolStateMachine/axe/blend_position = Vector2(-0.368759, 0.645492)
 parameters/ToolStateMachine/hoe/blend_position = Vector2(-0.536646, -0.652174)
 parameters/ToolStateMachine/water/blend_position = Vector2(0, 0)
 parameters/MoveStateMachine/idle/blend_position = Vector2(0, 0)
+parameters/MoveStateMachine/move/blend_position = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]

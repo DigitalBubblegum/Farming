@@ -912,7 +912,6 @@ transitions = ["Start", "hoe", SubResource("AnimationNodeStateMachineTransition_
 graph_offset = Vector2(-13.637687, -191)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6eyoc"]
-graph_offset = Vector2(-34.107098, -8.97171)
 nodes/output/position = Vector2(1253.3334, 80)
 nodes/ToolStateMachine/node = SubResource("AnimationNodeStateMachine_vwwfy")
 nodes/ToolStateMachine/position = Vector2(586.6667, 346.66666)
@@ -943,8 +942,8 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendTree_6eyoc")
 anim_player = NodePath("../AnimationPlayer")
-parameters/ToolStateMachine/axe/blend_position = Vector2(-0.368759, 0.645492)
-parameters/ToolStateMachine/hoe/blend_position = Vector2(-0.536646, -0.652174)
+parameters/ToolStateMachine/axe/blend_position = Vector2(0, 0)
+parameters/ToolStateMachine/hoe/blend_position = Vector2(0, 0)
 parameters/ToolStateMachine/water/blend_position = Vector2(0, 0)
 parameters/MoveStateMachine/idle/blend_position = Vector2(0, 0)
 parameters/MoveStateMachine/move/blend_position = Vector2(0, 0)

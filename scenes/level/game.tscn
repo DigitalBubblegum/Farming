@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://bf0yuue48pk6v"]
+[gd_scene load_steps=12 format=4 uid="uid://bf0yuue48pk6v"]
 
 [ext_resource type="PackedScene" uid="uid://ca106qafnt25o" path="res://scenes/player/player.tscn" id="1_e6yxx"]
 [ext_resource type="Texture2D" uid="uid://baw527j36pxgi" path="res://graphics/tilesets/grass.png" id="1_pl0c8"]
 [ext_resource type="Texture2D" uid="uid://b134tjp5ngghx" path="res://graphics/tilesets/water.png" id="1_qhoho"]
 [ext_resource type="Texture2D" uid="uid://c15lysgtp52wu" path="res://graphics/tilesets/soil.png" id="2_dt6h4"]
+[ext_resource type="PackedScene" uid="uid://doi42nnng73e" path="res://scenes/level/tree.tscn" id="5_qrcxb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qrcxb"]
 texture = ExtResource("1_qhoho")
@@ -825,3 +826,6 @@ tile_set = SubResource("TileSet_qrcxb")
 y_sort_enabled = true
 
 [node name="Player" parent="Objects" instance=ExtResource("1_e6yxx")]
+
+[node name="Tree" parent="Objects" instance=ExtResource("5_qrcxb")]
+position = Vector2(39, -8)

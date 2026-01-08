@@ -11,6 +11,7 @@ const tool_connection = {
 	Tools.AXE: 'axe',
 	Tools.WATER: 'water',
 }
+signal tool_use(tool:Tools, pos:Vector2)
 
 func _physics_process(_delta: float) -> void:
 	if can_move:
@@ -28,6 +29,7 @@ func get_input():
 		tool_state_machine.travel(tool_connection[current_tool])
 		$AnimationTree.set("parameters/OneShot/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		can_move = false
+		tool_use.emit(current_tool,position)
 
 func animation():
 	if direction:

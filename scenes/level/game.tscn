@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://bf0yuue48pk6v"]
+[gd_scene load_steps=16 format=4 uid="uid://bf0yuue48pk6v"]
 
 [ext_resource type="PackedScene" uid="uid://ca106qafnt25o" path="res://scenes/player/player.tscn" id="1_e6yxx"]
+[ext_resource type="Script" uid="uid://b3ng0hqvjdjlh" path="res://scripts/game.gd" id="1_f2w0s"]
 [ext_resource type="Texture2D" uid="uid://baw527j36pxgi" path="res://graphics/tilesets/grass.png" id="1_pl0c8"]
 [ext_resource type="Texture2D" uid="uid://b134tjp5ngghx" path="res://graphics/tilesets/water.png" id="1_qhoho"]
 [ext_resource type="Texture2D" uid="uid://c15lysgtp52wu" path="res://graphics/tilesets/soil.png" id="2_dt6h4"]
@@ -842,6 +843,7 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_f2w0s")
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_f2w0s")
 
 [node name="Layers" type="Node2D" parent="."]
 
@@ -868,3 +870,5 @@ y_sort_enabled = true
 
 [node name="Tree" parent="Objects" instance=ExtResource("5_qrcxb")]
 position = Vector2(39, -8)
+
+[connection signal="tool_use" from="Objects/Player" to="." method="_on_player_tool_use"]

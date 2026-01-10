@@ -5,7 +5,11 @@ var speed: int = 100
 @onready var tool_state_machine: AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/ToolStateMachine/playback")
 var can_move: bool = true
 enum Tools {HOE, AXE, WATER}
-var current_tool: Tools = Tools.AXE
+var current_tool: Tools = Tools.HOE
+var last_direction: Vector2
+@export var tool_direction_offset:= 16
+@export var tool_direction_x_offset: = 5
+@export var tool_direction_y_offset: = -8
 const tool_connection = {
 	Tools.HOE : 'hoe',
 	Tools.AXE: 'axe',
@@ -16,6 +20,8 @@ signal tool_use(tool:Tools, pos:Vector2)
 func _physics_process(_delta: float) -> void:
 	if can_move:
 		get_input()
+	if direction:
+		last_direction = direction
 	velocity = direction * speed * int(can_move)
 	move_and_slide()
 	animation()
@@ -29,7 +35,9 @@ func get_input():
 		tool_state_machine.travel(tool_connection[current_tool])
 		$AnimationTree.set("parameters/OneShot/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		can_move = false
-		tool_use.emit(current_tool,position)
+		if current_tool == Tools.HOE:
+			await $AnimationTree.animation_finished
+		tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,tool_direction_y_offset))
 
 func animation():
 	if direction:

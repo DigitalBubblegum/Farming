@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 func _on_player_tool_use(tool: int, pos: Vector2) -> void:
 	var grid_pos = Vector2i(int(pos.x/16),int(pos.y/16))
 	if tool == player.Tools.HOE:
-		print('HOE')
+		$Layers/GroundTileMapLayer.set_cells_terrain_connect([grid_pos],0,0)
 	if tool == player.Tools.AXE:
 		print('AXE')
 	if tool == player.Tools.WATER:

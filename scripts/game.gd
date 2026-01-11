@@ -18,7 +18,9 @@ func _on_player_tool_use(tool: int, pos: Vector2) -> void:
 		if(cell and cell.get_custom_data('usable')):
 			$Layers/GroundTileMapLayer.set_cells_terrain_connect([grid_pos],0,0)
 	if tool == player.Tools.AXE:
-		print('AXE')
+		for tree in get_tree().get_nodes_in_group('Trees'):
+			if tree.position.distance_to(pos)<10:
+				tree.hit()
 	if tool == player.Tools.WATER:
 		if $Layers/GroundTileMapLayer.get_cell_tile_data(grid_pos):
 			$Layers/SolilWaterTileMapLayer.set_cells(grid_pos,0,Vector2i(randi_range(0,2),0))

@@ -38,7 +38,8 @@ func get_input():
 		if current_tool == Tools.HOE:
 			await $AnimationTree.animation_finished
 		#tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,tool_direction_y_offset))
-		tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,0))
+		if(current_tool!=Tools.AXE):
+			tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,0))
 
 func animation():
 	if direction:
@@ -54,3 +55,6 @@ func animation():
 
 func _on_animation_tree_animation_finished(_anim_name: StringName) -> void:
 	can_move = true
+
+func axe_use():
+	tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,0))

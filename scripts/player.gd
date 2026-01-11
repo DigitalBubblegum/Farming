@@ -8,8 +8,8 @@ enum Tools {HOE, AXE, WATER}
 var current_tool: Tools = Tools.HOE
 var last_direction: Vector2
 @export var tool_direction_offset:= 16
-@export var tool_direction_x_offset: = 5
-@export var tool_direction_y_offset: = -8
+@export var tool_direction_x_offset: = 0
+@export var tool_direction_y_offset: = 8
 const tool_connection = {
 	Tools.HOE : 'hoe',
 	Tools.AXE: 'axe',
@@ -37,7 +37,8 @@ func get_input():
 		can_move = false
 		if current_tool == Tools.HOE:
 			await $AnimationTree.animation_finished
-		tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,tool_direction_y_offset))
+		#tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,tool_direction_y_offset))
+		tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,0))
 
 func animation():
 	if direction:

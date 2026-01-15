@@ -891,4 +891,10 @@ y_sort_enabled = true
 [node name="Tree" parent="Objects" instance=ExtResource("5_qrcxb")]
 position = Vector2(39, -8)
 
+[node name="Tree2" parent="Objects" instance=ExtResource("5_qrcxb")]
+position = Vector2(54, 66)
+
+[node name="Tree3" parent="Objects" instance=ExtResource("5_qrcxb")]
+position = Vector2(137, 27)
+
 [connection signal="tool_use" from="Objects/Player" to="." method="_on_player_tool_use"]

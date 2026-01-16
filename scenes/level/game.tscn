@@ -897,4 +897,10 @@ position = Vector2(54, 66)
 [node name="Tree3" parent="Objects" instance=ExtResource("5_qrcxb")]
 position = Vector2(137, 27)
 
+[node name="Tree4" parent="Objects" instance=ExtResource("5_qrcxb")]
+position = Vector2(84, 197)
+
+[node name="Tree5" parent="Objects" instance=ExtResource("5_qrcxb")]
+position = Vector2(-39, 230)
+
 [connection signal="tool_use" from="Objects/Player" to="." method="_on_player_tool_use"]

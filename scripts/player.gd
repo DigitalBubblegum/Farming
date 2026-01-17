@@ -15,7 +15,11 @@ const tool_connection = {
 	Tools.AXE: 'axe',
 	Tools.WATER: 'water',
 }
+enum Seeds {CORN,TOMATO,PUMPKIN}
+var current_seed: Seeds = Seeds.CORN
 signal tool_use(tool:Tools, pos:Vector2)
+signal seed_use(seed:Seeds,pos:Vector2)
+
 
 func _physics_process(_delta: float) -> void:
 	if can_move:
@@ -40,6 +44,11 @@ func get_input():
 		#tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,tool_direction_y_offset))
 		if(current_tool!=Tools.AXE):
 			tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,0))
+	if(Input.is_action_just_pressed("seed_toggle")):
+		current_seed = posmod(current_seed+1,Seeds.size()) as Seeds
+		print(current_seed)
+	if(Input.is_action_just_pressed("plant")):
+		print("planting")
 
 func animation():
 	if direction:

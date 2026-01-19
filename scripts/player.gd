@@ -48,7 +48,11 @@ func get_input():
 		current_seed = posmod(current_seed+1,Seeds.size()) as Seeds
 		print(current_seed)
 	if(Input.is_action_just_pressed("plant")):
-		print("planting")
+		can_move = false
+		direction = Vector2.ZERO
+		seed_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,0))
+		await get_tree().create_timer(0.5).timeout
+		can_move = true
 
 func animation():
 	if direction:

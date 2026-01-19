@@ -24,3 +24,10 @@ func _on_player_tool_use(tool: int, pos: Vector2) -> void:
 	if tool == player.Tools.WATER:
 		if $Layers/GroundTileMapLayer.get_cell_tile_data(grid_pos):
 			$Layers/SolilWaterTileMapLayer.set_cells(grid_pos,0,Vector2i(randi_range(0,2),0))
+
+
+func _on_player_seed_use(seed: int, pos: Vector2) -> void:
+	var grid_pos = Vector2i(int(pos.x/16),int(pos.y/16))
+	var cell = $Layers/GroundTileMapLayer.get_cell_tile_data(grid_pos) as TileData
+	if cell:
+		print(grid_pos)

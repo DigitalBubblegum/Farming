@@ -39,9 +39,9 @@ func get_input():
 		tool_state_machine.travel(tool_connection[current_tool])
 		$AnimationTree.set("parameters/OneShot/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		can_move = false
-		if current_tool == Tools.HOE:
+		if current_tool in [Tools.HOE,Tools.WATER]:
 			await $AnimationTree.animation_finished
-		#tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,tool_direction_y_offset))
+			tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,tool_direction_y_offset))
 		if(current_tool!=Tools.AXE):
 			tool_use.emit(current_tool,position+last_direction*tool_direction_offset+Vector2(tool_direction_x_offset,0))
 	if(Input.is_action_just_pressed("seed_toggle")):

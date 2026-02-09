@@ -887,6 +887,7 @@ tile_set = SubResource("TileSet_3ny2s")
 y_sort_enabled = true
 
 [node name="Player" parent="Objects" unique_id=267415947 instance=ExtResource("1_e6yxx")]
+position = Vector2(-73, -2)
 
 [node name="Tree" parent="Objects" unique_id=1281032694 instance=ExtResource("5_qrcxb")]
 position = Vector2(39, -8)
